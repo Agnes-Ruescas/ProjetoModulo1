@@ -1,0 +1,27 @@
+package TotemHospital;
+
+import java.util.Scanner;
+
+public class Impressão {
+	public static void main(String[] args) {
+		Scanner ler= new Scanner(System.in);
+		
+		int contCorona=0, contOutros=0;
+		
+		System.out.println("\nDigite seu nome completo: ");
+		String nome = ler.next();
+		System.out.println("\nDigite o cpf:");
+		String cpf = ler.next();
+		System.out.println("\nDigite sua idade: ");
+		int idade = ler.nextInt();
+		System.out.println("\nQuais sintomas você apresenta? \n1--Febre alta e falta de ar (COM AMBOS) \n2--Outros");
+		int sintomas = ler.nextInt();
+		
+		Paciente paciente = new Paciente();
+		if(paciente.getSintomas() == 1) {
+			contCorona++;
+			System.out.println("Por favor dirija-se ao 3° andar(Ala azul) através do elevador 1");
+			System.out.println("Sua senha será chamada no painel \tSENHA: "+contCorona);
+		}
+	}
+}

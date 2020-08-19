@@ -1,0 +1,53 @@
+package TotemHospital;
+
+import java.util.Scanner;
+
+public class Impressão {
+	public static void main(String[] args) {
+		Scanner ler= new Scanner(System.in);
+		
+		boolean ligado = true;
+		int contCorona=0, contPed=0, contGeral = 0, contGeri=0;
+		
+		
+		while(ligado == true) {
+		System.out.println("\nDigite seu nome completo: ");
+		String nome = ler.next();
+		System.out.println("\nDigite o cpf:");
+		String cpf = ler.next();
+		System.out.println("\nDigite sua idade: ");
+		int idade = ler.nextInt();
+		if(idade>0  || idade<=130) {
+		System.out.println("\nQuais sintomas você apresenta? \n1--Febre alta e falta de ar (COM AMBOS) \n2--Outros");
+		int sintomas = ler.nextInt();
+		
+		Paciente paciente = new Paciente(nome, cpf, idade, sintomas);
+		if(sintomas == 1) {
+			contCorona++;
+			System.out.println("Por favor dirija-se ao 4° andar(Ala vermelha) através do elevador 1");
+			System.out.println("Sua senha será chamada no painel \tSENHA: "+contCorona);
+		}
+		else if(sintomas == 2) {
+			if(idade>0 && idade<=12) {
+				contPed++;
+				System.out.println("Por favor dirija-se ao 1° andar(Ala Pediatrica) através do elevador 1");
+				System.out.println("Sua senha será chamada no painel \tSENHA: "+contPed);
+			}
+			else if(idade>12 && idade<60) {
+				contGeral++;
+				System.out.println("Por favor dirija-se ao 2° andar(Ala Geral) através do elevador 1");
+				System.out.println("Sua senha será chamada no painel \tSENHA: "+contGeral);
+			}
+			else if(idade>60 && idade<=130) {
+				contGeri++;
+				System.out.println("Por favor dirija-se ao 3° andar(Ala Geriatrica) através do elevador 1");
+				System.out.println("Sua senha será chamada no painel \tSENHA: "+contGeri);
+			}
+		}
+	}
+		else {
+			System.out.println("Idade invalida!");
+		}
+  }
+}
+}
